@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { SpottedAuthService } from './services/spotted-service/spotted-auth.service';
 
+/**
+ * This will serve as the base container of the application
+ */
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,7 +12,7 @@ import { SpottedAuthService } from './services/spotted-service/spotted-auth.serv
 export class AppComponent implements OnInit {
   title = 'Spotted';
 
-  constructor(private spottedAuthService: SpottedAuthService) {
+  constructor(private spottedAuthService: SpottedAuthService) {}
 
     ngOnInit() {
 
@@ -18,5 +21,4 @@ export class AppComponent implements OnInit {
     authUser(): void {
       this.spottedAuthService.authorizeSpotify();
     }
-  }
 }

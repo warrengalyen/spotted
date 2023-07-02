@@ -1,5 +1,5 @@
 /**
- *Constants for the Spotted Service files
+ * Constants for the Spotted Service files
  *
  * @export
  * @class SpottedAppConstants
