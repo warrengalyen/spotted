@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
 import { Http, Headers, Response } from '@angular/http';
 import { SpottedAppConstants } from "./spotted-service.config";
+import { SpottedCredentials } from './spotted-credentials';
 
 /**
  * App authentication with Spotify
@@ -16,14 +17,13 @@ export class SpottedAuthService {
    * Allow the user to authorize itself when logging into Spotify
    */
   public authorizeSpotify(): Promise<string> {
-    const authUrl = SpottedAppConstants.API_URL + SpottedAppConstants.API_AUTH;
-    const headers = new Headers({
-      client_id: '',
-      response_type: 'json',
-      redirect_uri: 'test'
-    });
-    return this.http.post(authUrl, {
-      headers: headers
+    const authUrl = SpottedAppConstants.API_ACCOUNT_URL + SpottedAppConstants.API_AUTH;
+    return this.http.get(authUrl, {
+      params: {
+        client_id: SpottedCredentials.client_id,
+        response_type: 'token',
+        redirect_uri: 'test'
+      }
     })
       .toPromise()
       .then((response: Response) => {
