@@ -8,11 +8,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './pages/login/container/login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeModule } from './pages/home/home.module';
+import { DashboardModule } from './layouts/dashboard/dashboard.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     // Angular Specific
@@ -21,7 +22,8 @@ import { HomeModule } from './pages/home/home.module';
     AppRoutingModule,
 
     // App Specific
-    HomeModule
+    HomeModule,
+    DashboardModule
   ],
   providers: [SpottedService, SpottedAuthService],
   bootstrap: [AppComponent]

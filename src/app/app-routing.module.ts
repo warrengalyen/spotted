@@ -2,6 +2,7 @@ import { HomeComponent } from './pages/home/container/home/home.component';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { LoginComponent } from './pages/login/container/login/login.component';
+import { DashboardComponent } from './layouts/dashboard/container/dashboard/dashboard.component';
 
 /**
  * Routing module for the entire application
@@ -15,6 +16,16 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    children: [
+      {
+        path: 'test',
+        loadChildren: () => import('./pages/test/test.module').then(x => x.TestModule)
+      }
+    ]
   }
 ];
 
