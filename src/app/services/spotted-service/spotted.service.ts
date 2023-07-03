@@ -4,6 +4,7 @@ import { map, catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import { SpottedAppConstants } from './spotted-service.config';
+import { User } from '../../models/user';
 
 /**
  * An Angular 6 service that interfaces with the Spotify API to fetch data.
@@ -25,13 +26,13 @@ export class SpottedService {
    * @returns {Observable<any>} - JSON response with top songs
    * @memberof SpottedService
    */
-  getProfile(token: string): Observable<any> {
+  getProfile(token: string): Observable<User> {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json'
     });
 
-    return this.http.get<any>(`${SpottedAppConstants.API_URL}${SpottedAppConstants.API_PROFILE}`, { headers: headers })
+    return this.http.get<User>(`${SpottedAppConstants.API_URL}${SpottedAppConstants.API_PROFILE}`, { headers: headers })
       .pipe(
         map(result => {
           console.log(result);
