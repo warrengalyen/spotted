@@ -1,4 +1,4 @@
-import { HomeComponent } from './pages/home/container/home/home.component';
+import { HomeComponent } from './pages/dashboard/home/home.component';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { LoginComponent } from './pages/login/container/login/login.component';
