@@ -1,4 +1,4 @@
-import {Injectable} from "@angular/core";
+import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { SpottedAppConstants } from "./spotted-service.config";
 import { SpottedCredentials } from './spotted-credentials';
@@ -7,7 +7,9 @@ import { LoggingService, LOG_LEVEL } from '../logging-service/logging.service';
 /**
  * App authentication with Spotify
  */
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class SpottedAuthService {
 
   private scopes = [
@@ -27,6 +29,9 @@ export class SpottedAuthService {
 
   /**
    * Allow the user to authorize itself when logging into Spotify
+   *
+   * @returns {Promise<string>}
+   * @memberof SpottedAuthService
    */
   public authorizeSpotify(): void {
     const authUrl = SpottedAppConstants.API_ACCOUNT_URL + SpottedAppConstants.API_AUTH;
@@ -54,9 +59,11 @@ export class SpottedAuthService {
   /* HELPER FUNCTIONS */
   /**
    * Helper function for building an url given a single level parameter object
+   *
+   * @private
    * @param {string} url - the url to build on
    * @param {*} params - object of parameters
-   * @returns {string} - returns the parameterized url
+   * @returns {string} - returns the paramaterized url
    * @memberOf SpottedAuthService
    */
   private buildUrlParam(url: string, params: any): string {

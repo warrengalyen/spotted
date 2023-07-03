@@ -5,6 +5,8 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import { SpottedAppConstants } from './spotted-service.config';
 import { User } from '../../models/user';
+import { TopTracks } from '../../models/topsongs';
+import { TopArtists } from '../../models/topartist';
 
 /**
  * An Angular 6 service that interfaces with the Spotify API to fetch data.
@@ -54,7 +56,7 @@ export class SpottedService {
    * @returns {Observable<any>} - JSON response with full data
    * @memberof SpottedService
    */
-  getTopTracks(token: string, timeRange?: string, limit?: string, offset?: string): Observable<any> {
+  getTopTracks(token: string, timeRange?: string, limit?: string, offset?: string): Observable<TopTracks> {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json'
@@ -69,7 +71,7 @@ export class SpottedService {
       params.set('offset', offset);
 
 
-    return this.http.get<any>(`${SpottedAppConstants.API_URL}${SpottedAppConstants.API_PROFILE}${SpottedAppConstants.API_TOP_TRACKS}`, { params,  headers: headers })
+    return this.http.get<TopTracks>(`${SpottedAppConstants.API_URL}${SpottedAppConstants.API_PROFILE}${SpottedAppConstants.API_TOP_TRACKS}`, { params,  headers: headers })
       .pipe(
         map(result => {
 
@@ -92,7 +94,7 @@ export class SpottedService {
    * @returns {Observable<any>} - JSON response with full data
    * @memberof SpottedService
    */
-  getTopArtists(token: string, timeRange?: string, limit?: string, offset?: string): Observable<any> {
+  getTopArtists(token: string, timeRange?: string, limit?: string, offset?: string): Observable<TopArtists> {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json'
@@ -107,7 +109,7 @@ export class SpottedService {
       params.set('offset', offset);
 
 
-    return this.http.get<any>(`${SpottedAppConstants.API_URL}${SpottedAppConstants.API_PROFILE}${SpottedAppConstants.API_TOP_ARTISTS}`, { params,  headers: headers })
+    return this.http.get<TopArtists>(`${SpottedAppConstants.API_URL}${SpottedAppConstants.API_PROFILE}${SpottedAppConstants.API_TOP_ARTISTS}`, { params,  headers: headers })
       .pipe(
         map(result => {
 

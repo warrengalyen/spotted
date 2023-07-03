@@ -1,9 +1,10 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { SpottedService } from './services/spotted-service/spotted.service';
 import { SpottedAuthService } from './services/spotted-service/spotted-auth.service';
+import { HttpModule } from '@angular/http';
 import { LoginComponent } from './pages/login/container/login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeModule } from './pages/home/home.module';
@@ -20,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     // Angular Specific
     BrowserModule,
+    HttpModule,
     HttpClientModule,
     AppRoutingModule,
 

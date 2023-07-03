@@ -10,7 +10,7 @@ import { SpottedAuthService } from './services/spotted-service/spotted-auth.serv
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'Spotted';
+  title = 'spotted';
 
   constructor(private spottedAuthService: SpottedAuthService) {}
 

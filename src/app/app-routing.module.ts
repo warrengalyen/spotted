@@ -28,7 +28,7 @@ const routes: Routes = [
     children: [
       {
         path: 'test',
-        loadChildren: () => import('./pages/test/test.module').then(x => x.TestModule)
+        loadChildren: './pages/test/test.module#TestModule'
       }
     ]
   }
