@@ -4,12 +4,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { SpottedService } from './services/spotted-service/spotted.service';
 import { SpottedAuthService } from './services/spotted-service/spotted-auth.service';
-import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './pages/login/container/login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeModule } from './pages/home/home.module';
 import { DashboardModule } from './layouts/dashboard/dashboard.module';
 import { AcceptComponent } from './pages/accept/accept.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [

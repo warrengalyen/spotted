@@ -10,7 +10,7 @@ import { LoggingService, LOG_LEVEL } from '../logging-service/logging.service';
 @Injectable()
 export class SpottedAuthService {
 
-  scope = [
+  private scopes = [
     'user-read-email',
     'user-read-currently-playing',
     'user-modify-playback-state',
@@ -19,7 +19,7 @@ export class SpottedAuthService {
     'user-read-private',
     'user-top-read',
     'user-read-email'
-  ].join('%20');
+  ];
 
   constructor(private http: Http, private loggingService: LoggingService) {
 
@@ -34,11 +34,15 @@ export class SpottedAuthService {
       client_id: SpottedCredentials.client_id,
       response_type: 'token',
       redirect_uri: 'http://localhost:4200/accept',
-      scope: this.scope
+      scope: encodeURIComponent(this.scopes.join(' '))
     });
   }
 
-  public saveToken(token: string): void {
+  public getToken(): string {
+    return localStorage.getItem(SpottedAppConstants.LOCAL_TOKEN);
+  }
+
+  public setToken(token: string): void {
     localStorage.setItem(SpottedAppConstants.LOCAL_TOKEN, token);
   }
 
