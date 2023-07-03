@@ -33,7 +33,7 @@ export class SpottedAuthService {
     window.location.href = this.buildUrlParam(authUrl + '?', {
       client_id: SpottedCredentials.client_id,
       response_type: 'token',
-      redirect_uri: 'http://localhost:4200',
+      redirect_uri: 'http://localhost:4200/accept',
       scope: this.scope
     });
   }
