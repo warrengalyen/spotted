@@ -38,6 +38,10 @@ export class SpottedAuthService {
     });
   }
 
+  public saveToken(token: string): void {
+    localStorage.setItem(SpottedAppConstants.LOCAL_TOKEN, token);
+  }
+
   /* HELPER FUNCTIONS */
   /**
    * Helper function for building an url given a single level parameter object

@@ -10,7 +10,9 @@ export const SpottedAppConstants: ISpottedAppConstants = {
   API_AUTH: '/authorize',
 
   AUTH_KEY: 'access_token',
-  AUTH_TYPE: 'token_type,'
+  AUTH_TYPE: 'token_type,',
+
+  LOCAL_TOKEN: 'spotted_auth_token',
 };
 
 export interface ISpottedAppConstants {
@@ -20,4 +22,6 @@ export interface ISpottedAppConstants {
 
   AUTH_KEY: string;
   AUTH_TYPE: string;
+
+  LOCAL_TOKEN: string;
 }
