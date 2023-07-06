@@ -17,6 +17,9 @@
 
   .title {
     letter-spacing: .03rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .subtitle {
