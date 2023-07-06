@@ -3,6 +3,10 @@
   max-width: 180px;
   max-height: 250px;
 
+  .w-100 {
+    overflow: auto;
+  }
+
   img {
     border-radius: .5rem;
     height: 180px;
