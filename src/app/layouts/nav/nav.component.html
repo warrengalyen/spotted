@@ -1,10 +1,15 @@
 <div class="side-nav">
-  <h3 class="app-title">Spotted</h3>
+  <div class="h-100">
+    <h3 class="app-title">Spotted</h3>
 
-  <p class="lbl-spotted">Categories</p>
+    <p class="lbl-spotted">Categories</p>
+    <ul>
+      <li class="selected spotted-li"><a href="#">Home</a></li>
+      <li class="spotted-li"><a href="#">Top Artists</a></li>
+      <li class="spotted-li"><a href="#">Top Songs</a></li>
+    </ul>
+  </div>
   <ul>
-    <li class="selected"><a href="#">Home</a></li>
-    <li><a href="#">Top Artists</a></li>
-    <li><a href="#">Top Songs</a></li>
+    <li class="spotted-li logout-li" (click)="logout()"><a href="#">Logout</a></li>
   </ul>
 </div>

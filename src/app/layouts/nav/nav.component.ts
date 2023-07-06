@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SpottedService } from "../../services/spotted-service/spotted.service";
+import {SpottedAuthService} from "../../services/spotted-service/spotted-auth.service";
 
 @Component({
   selector: 'app-nav',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  constructor() { }
+  constructor(private auth: SpottedAuthService) { }
 
   ngOnInit() {
+  }
+
+  logout() {
+    this.auth.logout();
   }
 
 }
