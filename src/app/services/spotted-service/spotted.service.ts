@@ -16,6 +16,8 @@ import { TopArtists } from '../../models/topartist';
 })
 export class SpottedService {
 
+  public profile: User = null;
+
   constructor(private http: HttpClient) {
 
   }
@@ -29,6 +31,11 @@ export class SpottedService {
    * @memberof SpottedService
    */
   getProfile(token: string): Observable<User> {
+
+    if (this.profile) {
+      return of(this.profile);
+    }
+
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json'
@@ -37,7 +44,7 @@ export class SpottedService {
     return this.http.get<User>(`${SpottedAppConstants.API_URL}${SpottedAppConstants.API_PROFILE}`, { headers: headers })
       .pipe(
         map(result => {
-          console.log(result);
+          this.profile = result;
           return result;
         }),
         catchError(err => {
