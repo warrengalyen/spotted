@@ -99,13 +99,13 @@ export class SpottedService {
       'Content-Type': 'application/json'
     });
 
-    const params = new HttpParams(); // Build params
+    let params = new HttpParams(); // Build params
     if (timeRange)
-      params.set('time_ramge', timeRange)
+      params = params.set('time_range', timeRange)
     if (limit)
-      params.set('limit', limit);
+      params = params.set('limit', limit);
     if (offset)
-      params.set('offset', offset);
+      params = params.set('offset', offset);
 
 
     return this.http.get<TopArtists>(`${SpottedAppConstants.API_URL}${SpottedAppConstants.API_PROFILE}${SpottedAppConstants.API_TOP_ARTISTS}`, { params,  headers: headers })

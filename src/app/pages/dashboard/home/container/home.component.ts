@@ -20,7 +20,12 @@ export class HomeComponent implements OnInit {
     this.api.getTopTracks(this.auth.getToken(), 'short_term', '5').subscribe(res => {
       console.log(res);
       this.topWeeklyTracks = res;
-    })
+    });
+
+    this.api.getTopArtists(this.auth.getToken(), 'short_term', '5').subscribe(res => {
+      console.log(res);
+      this.topWeeklyArtists = res;
+    });
   }
 
 }
