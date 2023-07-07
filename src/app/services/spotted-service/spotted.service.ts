@@ -18,9 +18,9 @@ export class SpottedService {
 
   public profile: User = null;
 
-  public shortTermTracks: TopTracks;
-  public mediumTermTracks: TopTracks;
-  public longTermTracks: TopTracks;
+  public shorTermTracks: TopTracks = null;
+  public mediumTermTracks: TopTracks = null;
+  public longTermTracks: TopTracks = null;
 
   constructor(private http: HttpClient) {
 
