@@ -198,7 +198,7 @@ export class SpottedService {
    * @param offset - offset of the results
    */
   public getLongTermArtists(token: string, limit?: string, offset?: string): Observable<TopArtists> {
-    if (this.longTermTracks) {
+    if (this.longTermArtists) {
       return of(this.longTermArtists);
     }
 
