@@ -18,7 +18,7 @@ export class SpottedService {
 
   public profile: User = null;
 
-  public shorTermTracks: TopTracks = null;
+  public shortTermTracks: TopTracks = null;
   public mediumTermTracks: TopTracks = null;
   public longTermTracks: TopTracks = null;
 
@@ -64,7 +64,7 @@ export class SpottedService {
    * @param offset - offset of the results
    */
   public getShortTermTracks(token: string, limit?: string, offset?: string): Observable<TopTracks> {
-    if (this.shortTermTracks) {
+    if (this.shortTermTracks && this.shortTermTracks.items.length === Number(limit)) {
       return of(this.shortTermTracks);
     }
 
