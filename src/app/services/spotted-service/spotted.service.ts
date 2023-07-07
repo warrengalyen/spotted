@@ -160,7 +160,7 @@ export class SpottedService {
    * @param offset - offset of the results
    */
   public getShortTermArtists(token: string, limit?: string, offset?: string): Observable<TopArtists> {
-    if (this.shortTermArtists) {
+    if (this.shortTermArtists && this.shortTermArtists.items.length === Number(limit)) {
       return of(this.shortTermArtists);
     }
 
