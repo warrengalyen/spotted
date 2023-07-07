@@ -18,6 +18,10 @@ export class SpottedService {
 
   public profile: User = null;
 
+  public shortTermTracks: TopTracks;
+  public mediumTermTracks: TopTracks;
+  public longTermTracks: TopTracks;
+
   constructor(private http: HttpClient) {
 
   }
@@ -54,6 +58,63 @@ export class SpottedService {
   }
 
   /**
+   * Return the list of tracks the user listened to the most last week
+   * @param token - user auth token
+   * @param limit - number of results to load
+   * @param offset - offset of the results
+   */
+  public getShortTermTracks(token: string, limit?: string, offset?: string): Observable<TopTracks> {
+    if (this.shortTermTracks) {
+      return of(this.shortTermTracks);
+    }
+
+    return this.getTopTracks(token, SpottedAppConstants.TOP_SHORT, limit, offset).pipe(
+      map(res => {
+        this.shortTermTracks = res;
+        return res;
+      })
+    )
+  }
+
+  /**
+   * Return the list of tracks the user listened to the most the last 6 months
+   * @param token - user auth token
+   * @param limit - number of results to load
+   * @param offset - offset of the results
+   */
+  public getMediumTermTracks(token: string, limit?: string, offset?: string): Observable<TopTracks> {
+    if (this.mediumTermTracks) {
+      return of(this.mediumTermTracks);
+    }
+
+    return this.getTopTracks(token, SpottedAppConstants.TOP_MEDIUM, limit, offset).pipe(
+      map(res => {
+        this.mediumTermTracks = res;
+        return res;
+      })
+    );
+  }
+
+  /**
+   * Return the list of tracks the user listened to the most all time
+   * @param token - user auth token
+   * @param limit - number of results to load
+   * @param offset - offset of the results
+   */
+  public getLongTermTracks(token: string, limit?: string, offset?: string): Observable<TopTracks> {
+    if (this.longTermTracks) {
+      return of(this.longTermTracks);
+    }
+
+    return this.getTopTracks(token, SpottedAppConstants.TOP_LONG, limit, offset).pipe(
+      map(res => {
+        this.longTermTracks = res;
+        return res;
+      })
+    );
+  }
+
+  /**
    * Get the top tracks for the user given a time range and other parameters
    *
    * @param {string} token - auth token for user
@@ -63,7 +124,7 @@ export class SpottedService {
    * @returns {Observable<any>} - JSON response with full data
    * @memberof SpottedService
    */
-  getTopTracks(token: string, timeRange?: string, limit?: string, offset?: string): Observable<TopTracks> {
+  private getTopTracks(token: string, timeRange?: string, limit?: string, offset?: string): Observable<TopTracks> {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json'
@@ -80,8 +141,6 @@ export class SpottedService {
     return this.http.get<TopTracks>(`${SpottedAppConstants.API_URL}${SpottedAppConstants.API_PROFILE}${SpottedAppConstants.API_TOP_TRACKS}`, { params, headers: headers })
       .pipe(
         map(result => {
-
-          console.log(result);
           return result;
         }),
         catchError(err => {

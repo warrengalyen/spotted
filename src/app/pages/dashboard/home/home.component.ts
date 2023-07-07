@@ -3,6 +3,7 @@ import { SpottedService } from '../../../services/spotted-service/spotted.servic
 import { TopTracks } from '../../../models/topsongs';
 import { TopArtists } from '../../../models/topartist';
 import { SpottedAuthService } from '../../../services/spotted-service/spotted-auth.service';
+import { SpottedAppConstants } from '../../../services/spotted-service/spotted-service.config';
 import { User } from '../../../models/user';
 
 @Component({
@@ -19,13 +20,11 @@ export class HomeComponent implements OnInit {
   constructor(private api: SpottedService, private auth: SpottedAuthService) { }
 
   ngOnInit() {
-    this.api.getTopTracks(this.auth.getToken(), 'short_term', '5').subscribe(res => {
-      console.log(res);
+    this.api.getShortTermTracks(this.auth.getToken(), '5').subscribe(res => {
       this.topWeeklyTracks = res;
     });
 
-    this.api.getTopArtists(this.auth.getToken(), 'short_term', '5').subscribe(res => {
-      console.log(res);
+    this.api.getTopArtists(this.auth.getToken(), SpottedAppConstants.TOP_SHORT, '5').subscribe(res => {
       this.topWeeklyArtists = res;
     });
 
