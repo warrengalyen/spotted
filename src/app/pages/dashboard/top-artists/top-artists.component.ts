@@ -4,6 +4,7 @@ import { SpottedService } from '../../../services/spotted-service/spotted.servic
 import { SpottedAuthService } from '../../../services/spotted-service/spotted-auth.service';
 import { SpottedAppConstants } from '../../../services/spotted-service/spotted-service.config';
 import { TopTracks } from '../../../models/topsongs';
+import { TopArtists } from '../../../models/topartist';
 
 @Component({
   selector: 'app-top-artists',
@@ -11,6 +12,10 @@ import { TopTracks } from '../../../models/topsongs';
   styleUrls: ['./top-artists.component.scss']
 })
 export class TopArtistsComponent implements OnInit {
+
+  public shortTermArtists: TopArtists;
+  public mediumTermArtists: TopArtists;
+  public longTermArtists: TopArtists;
 
   constructor(private api: SpottedService, private auth: SpottedAuthService) { }
 

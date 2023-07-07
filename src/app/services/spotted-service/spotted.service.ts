@@ -22,6 +22,10 @@ export class SpottedService {
   public mediumTermTracks: TopTracks = null;
   public longTermTracks: TopTracks = null;
 
+  public shortTermArtists: TopArtists = null;
+  public mediumTermArtists: TopArtists = null;
+  public longTermArtists: TopArtists = null;
+
   constructor(private http: HttpClient) {
 
   }
@@ -150,6 +154,63 @@ export class SpottedService {
   }
 
   /**
+   * Return the top artists listened to last week
+   * @param token - user auth token
+   * @param limit - number of results to load
+   * @param offset - offset of the results
+   */
+  public getShortTermArtists(token: string, limit?: string, offset?: string): Observable<TopArtists> {
+    if (this.shortTermArtists) {
+      return of(this.shortTermArtists);
+    }
+
+    return this.getTopArtists(token, SpottedAppConstants.TOP_SHORT, limit, offset).pipe(
+      map(res => {
+        this.shortTermArtists = res;
+        return res;
+      })
+    );
+  }
+
+  /**
+   * Return the top artists listened to the last 6 months
+   * @param token - user auth token
+   * @param limit - number of results to load
+   * @param offset - offset of the results
+   */
+  public getMediumTermArtists(token: string, limit?: string, offset?: string): Observable<TopArtists> {
+    if (this.mediumTermArtists) {
+      return of(this.mediumTermArtists);
+    }
+
+    return this.getTopArtists(token, SpottedAppConstants.TOP_MEDIUM, limit, offset).pipe(
+      map(res => {
+        this.mediumTermArtists  = res;
+        return res;
+      })
+    );
+  }
+
+  /**
+   * Return the top artists listened to all time
+   * @param token - user auth token
+   * @param limit - number of results to load
+   * @param offset - offset of the results
+   */
+  public getLongTermArtists(token: string, limit?: string, offset?: string): Observable<TopArtists> {
+    if (this.longTermTracks) {
+      return of(this.longTermArtists);
+    }
+
+    return this.getTopArtists(token, SpottedAppConstants.TOP_LONG, limit, offset).pipe(
+      map(res => {
+        this.longTermArtists = res;
+        return res;
+      })
+    );
+  }
+
+  /**
    * Function to get the top artists for a given user
    *
    * @param {string} token - auth token for user
@@ -159,7 +220,7 @@ export class SpottedService {
    * @returns {Observable<any>} - JSON response with full data
    * @memberof SpottedService
    */
-  getTopArtists(token: string, timeRange?: string, limit?: string, offset?: string): Observable<TopArtists> {
+  private getTopArtists(token: string, timeRange?: string, limit?: string, offset?: string): Observable<TopArtists> {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json'
