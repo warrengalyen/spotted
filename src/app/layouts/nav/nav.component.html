@@ -4,11 +4,9 @@
 
     <p class="lbl-spotted">Categories</p>
     <ul>
-      <li class="selected spotted-li"><a href="#">Home</a></li>
-      <li class="spotted-li"><a href="#">Top Artists</a></li>
-      <li class="spotted-li"><a href="#">Top Songs</a></li>
-      <li class="spotted-li"><a href="#">Top Genres</a></li>
-      <li class="spotted-li"><a href="#">Playlist Stats</a></li>
+      <li *ngFor="let link of pages" [class.selected]="curUrl.endsWith(link.url)" (click)="updateCurUrl()" class="spotted-li">
+        <a routerLink="{{ link.url }}">{{ link.name }}</a>
+      </li>
     </ul>
   </div>
   <ul>
