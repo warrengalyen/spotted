@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { SpottedService } from '../../../../services/spotted-service/spotted.service';
-import { TopTracks } from '../../../../models/topsongs';
-import { TopArtists } from '../../../../models/topartist';
-import { SpottedAuthService } from '../../../../services/spotted-service/spotted-auth.service';
-import { User } from "../../../../models/user";
+import { SpottedService } from '../../../services/spotted-service/spotted.service';
+import { TopTracks } from '../../../models/topsongs';
+import { TopArtists } from '../../../models/topartist';
+import { SpottedAuthService } from '../../../services/spotted-service/spotted-auth.service';
+import { User } from '../../../models/user';
 
 @Component({
   selector: 'app-home',

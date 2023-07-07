@@ -1,11 +1,7 @@
-@import '../../../../../../global/label.scss';
-.song-card {
+@import '../../../../../global/label.scss';
+.artist-card {
   max-height: 250px;
   width: 180px;
-
-  .w-100 {
-    overflow: auto;
-  }
 
   img {
     border-radius: .5rem;
