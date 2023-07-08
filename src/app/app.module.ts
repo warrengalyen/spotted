@@ -17,7 +17,6 @@ import { faBars, faHeadphonesAlt, faMusic, faStar, faGenderless, faGripLines, fa
 import { faEdit, faChartBar } from '@fortawesome/free-regular-svg-icons';
 
 /* Ant Design Lib */
-// import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
 import { NgZorroAntdModule, NZ_I18N, en_US } from 'ng-zorro-antd';
 
 /** config angular i18n **/
@@ -60,7 +59,8 @@ library.add(faBars, faEdit, faHeadphonesAlt, faMusic, faStar, faGenderless, faCh
 
     // App Specific
     DashboardModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgZorroAntdModule
   ],
   providers: [SpottedService, SpottedAuthService, { provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
