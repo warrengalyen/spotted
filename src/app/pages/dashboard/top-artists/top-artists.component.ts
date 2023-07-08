@@ -17,6 +17,8 @@ export class TopArtistsComponent implements OnInit {
   public mediumTermArtists: TopArtists;
   public longTermArtists: TopArtists;
 
+  public viewMode: string = 'grid'; // TODO: Add to consts
+
   constructor(private api: SpottedService, private auth: SpottedAuthService) { }
 
   ngOnInit() {
@@ -46,6 +48,7 @@ export class TopArtistsComponent implements OnInit {
     });
   }
 
+  private toggleViewMode(view: string) {
+    this.viewMode = view;
   }
-
 }
