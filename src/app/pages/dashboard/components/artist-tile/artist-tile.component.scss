@@ -1,6 +1,25 @@
 .artist-tile {
   margin: 1rem 0;
 
+  &.col-rank {
+    width: 25px;
+  }
+  &.col-artist {
+    width: 125px;
+  }
+  &.col-popularity {
+    width: 125px;
+  }
+  &.col-genre {
+    width: 375px;
+
+    p {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+
   img {
     height: 100px;
     width: 100px;
