@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {SpottedAuthService} from "../../services/spotted-service/spotted-auth.service";
 import { Router } from '@angular/router';
+import {User} from "../../models/user";
+import {SpottedService} from "../../services/spotted-service/spotted.service";
 
 @Component({
   selector: 'app-nav',
@@ -9,7 +11,8 @@ import { Router } from '@angular/router';
 })
 export class NavComponent implements OnInit {
 
-  public curUrl: string = '';
+  public curUrl = '';
+  public curUser: User;
 
   public pages: any = [
     { name: 'Home', url: 'home', fa: ['fa', 'bars'] },
@@ -20,14 +23,13 @@ export class NavComponent implements OnInit {
     { name: 'Playlist Stats', url: '#', fa: ['far', 'chart-bar'] }
   ];
 
-  constructor(private router: Router, private auth: SpottedAuthService) { }
-
-  ngOnInit() {
-    this.curUrl = this.router.url.substring(this.router.url.indexOf('dashboard'));
-    console.log(this.curUrl);
+  constructor(private router: Router, private auth: SpottedAuthService, private api: SpottedService) {
+    this.api.getProfile(this.auth.getToken()).subscribe(user => {
+      this.curUser = user;
+    })
   }
 
-  private updateCurUrl() {
+  ngOnInit() {
     this.curUrl = this.router.url.substring(this.router.url.indexOf('dashboard'));
   }
 
