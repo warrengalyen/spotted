@@ -3,6 +3,7 @@ import {SpottedAuthService} from "../../services/spotted-service/spotted-auth.se
 import { Router } from '@angular/router';
 import {User} from "../../models/user";
 import {SpottedService} from "../../services/spotted-service/spotted.service";
+import {SpottedAppConstants} from "../../services/spotted-service/spotted-service.config";
 
 @Component({
   selector: 'app-nav',
@@ -30,6 +31,11 @@ export class NavComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.curUrl = this.router.url.substring(this.router.url.indexOf('dashboard'));
+    this.api.getTopGenres(this.auth.getToken(), SpottedAppConstants.TOP_SHORT).subscribe(res => null);
+  }
+
+  private updateCurUrl() {
     this.curUrl = this.router.url.substring(this.router.url.indexOf('dashboard'));
   }
 
