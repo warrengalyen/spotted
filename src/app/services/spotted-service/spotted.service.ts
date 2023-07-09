@@ -145,6 +145,7 @@ export class SpottedService {
     return this.http.get<TopTracks>(`${SpottedAppConstants.API_URL}${SpottedAppConstants.API_PROFILE}${SpottedAppConstants.API_TOP_TRACKS}`, { params, headers: headers })
       .pipe(
         map(result => {
+          result.time_period = timeRange;
           return result;
         }),
         catchError(err => {
