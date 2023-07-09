@@ -7,6 +7,7 @@ import { AcceptComponent } from './pages/accept/accept.component';
 import { TopArtistsComponent } from './pages/dashboard/top-artists/top-artists.component';
 import { TopTracksComponent } from './pages/dashboard/top-tracks/top-tracks.component';
 import { RankingsComponent } from './pages/dashboard/rankings/rankings.component';
+import { GenreComponent } from './pages/dashboard/genre/genre.component';
 
 /**
  * Routing module for the entire application
@@ -53,6 +54,10 @@ const routes: Routes = [
       {
         path: 'rankings',
         component: RankingsComponent
+      },
+      {
+        path: 'top-genres',
+        component: GenreComponent
       }
     ]
   }
