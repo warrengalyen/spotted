@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SpottedAuthService } from '../../../services/spotted-service/spotted-auth.service';
 import { SpottedService } from '../../../services/spotted-service/spotted.service';
 import { SpottedAppConstants } from '../../../services/spotted-service/spotted-service.config';
+import { Genre } from '../../../models/common';
 
 @Component({
   selector: 'app-genre',
@@ -10,9 +11,9 @@ import { SpottedAppConstants } from '../../../services/spotted-service/spotted-s
 })
 export class GenreComponent implements OnInit {
 
-  private shortGenres: string[];
-  private mediumGenres: string[];
-  private longGenres: string[];
+  public shortGenres: Genre[];
+  public mediumGenres: Genre[];
+  public longGenres: Genre[];
 
   constructor(private auth: SpottedAuthService, private api: SpottedService) { }
 
