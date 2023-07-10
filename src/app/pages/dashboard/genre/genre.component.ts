@@ -10,13 +10,21 @@ import { SpottedAppConstants } from '../../../services/spotted-service/spotted-s
 })
 export class GenreComponent implements OnInit {
 
-  private genres: string[];
+  private shortGenres: string[];
+  private mediumGenres: string[];
+  private longGenres: string[];
 
   constructor(private auth: SpottedAuthService, private api: SpottedService) { }
 
   ngOnInit() {
+    this.api.getTopGenres(this.auth.getToken(), SpottedAppConstants.TOP_SHORT).subscribe(genres => {
+      this.shortGenres = genres;
+    });
+    this.api.getTopGenres(this.auth.getToken(), SpottedAppConstants.TOP_MEDIUM).subscribe(genres => {
+      this.mediumGenres = genres;
+    });
     this.api.getTopGenres(this.auth.getToken(), SpottedAppConstants.TOP_LONG).subscribe(genres => {
-      this.genres = genres;
+      this.longGenres = genres;
     });
   }
 
