@@ -1,24 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { SpottedAuthService } from './services/spotted-service/spotted-auth.service';
 
-/**
- * This will serve as the base container of the application
- */
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'spotted';
-
-  constructor(private spottedAuthService: SpottedAuthService) {}
-
-    ngOnInit() {
-
-    }
-
-    authUser(): void {
-      this.spottedAuthService.authorizeSpotify();
-    }
 }
