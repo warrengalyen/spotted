@@ -45,9 +45,7 @@ export class AuthService {
   setToken(token: string) {
     this.store.set(AuthConstants.AUTH_KEY, token);
     console.log(this.store.value.access_token);
-
   }
-
 
   getProfile(token: string): Promise<any> {
     // TODO: Check logged in or not
