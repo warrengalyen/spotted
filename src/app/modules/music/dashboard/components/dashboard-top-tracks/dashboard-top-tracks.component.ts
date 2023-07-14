@@ -7,7 +7,7 @@ import { TopTracksResponse } from '../../../shared/models/top.model';
   template: `
     <div class="mb-8">
       <div class="flex justify-between">
-        <p class="text-xl text-gray-500 font-semibold mb-4">
+        <p class="text-xl text-gray-500 font-semibold mb-4 tracking-tighter">
           Recent Top Tracks
         </p>
         <spotted-button text="See More"></spotted-button>
