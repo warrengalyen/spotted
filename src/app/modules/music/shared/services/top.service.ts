@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import {
-  TopArtistsResponse,
-  TopTracksResponse,
-} from '../models/top.model';
+
+import { TopArtistsResponse, TopTracksResponse } from '../models/top.model';
 import { ENDPOINTS } from '../store/endpoint.store';
 import { DEFAULT_CACHE_MINUTES } from '../music.constants';
 
