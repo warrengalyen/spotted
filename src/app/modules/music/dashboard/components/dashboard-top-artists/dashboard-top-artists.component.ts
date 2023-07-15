@@ -10,7 +10,7 @@ import { TopArtistsResponse } from '../../../shared/models/top.model';
         <p class="text-xl text-gray-500 font-semibold mb-4 tracking-tighter">
           Recent Top Artists
         </p>
-        <spotted-button text="See More"></spotted-button>
+        <a [routerLink]="['/music/top-artists']"><spotted-button text="See More"></spotted-button></a>
       </div>
       <div *ngIf="topArtists" class="sm:flex sm:flex-wrap">
         <dashboard-top-artist
