@@ -18,6 +18,8 @@ export class AuthService {
     'user-read-private',
     'user-top-read',
     'user-read-email',
+    'playlist-read-private',
+    'playlist-read-collaborative'
   ];
   auth$: Observable<string>;
 
@@ -37,6 +39,10 @@ export class AuthService {
     });
   }
 
+  public logout(): void {
+      this.store.set(AuthConstants.AUTH_KEY, undefined);
+  }
+
   get authToken() {
     return this.store.value.access_token;
   }
@@ -46,23 +52,9 @@ export class AuthService {
     console.log(this.store.value.access_token);
   }
 
-  getProfile(token: string): Promise<any> {
-    // TODO: Check logged in or not
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json',
-    });
-
-    return this.httpClient
-      .get(`${AuthConstants.API_URL}${AuthConstants.API_PROFILE}`, {
-        headers,
-      })
-      .toPromise();
-  }
-
   /* HELPER FUNCTIONS */
   /**
-   *Helper function for building a url given a single level parameter object
+   * Helper function for building a url given a single level parameter object
    *
    * @private
    * @param {string} url - the url to build off of
