@@ -18,17 +18,13 @@ import { AuthService } from '../../../shared/services/auth.service';
       <div class="splash__container w-full mx-8 z-10 sm:mx-24 xl:mx-auto">
         <p class="wow mb-3 text-5xl md:text-9xl tracking-tight md:mb-8">Spotted.</p>
         <p class="text-l leading-normal md:text-4xl md:w-1/2">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Spotify stats all in one place.
         </p>
         <div class="flex my-8 md:my-12">
           <spotted-button
             text="Log In"
             extraClasses="mr-4 md:px-12 md:py-3"
             (click)="loginUser()"
-          ></spotted-button>
-          <spotted-button
-            text="About"
-            extraClasses="mr-4 md:px-12 md:py-3"
           ></spotted-button>
         </div>
       </div>
