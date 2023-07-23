@@ -1,12 +1,11 @@
 .wow {
-  //background: url(https://images.unsplash.com/photo-1614850523296-d8c1af93d400?w=1000&q=80)
-  //  center center;
-  //-webkit-background-clip: text;
-  //background-clip: text;
-  //-webkit-text-fill-color: transparent;
-  //background-size: 100% 200% !important;
+  background: url(https://images.unsplash.com/photo-1614850523296-d8c1af93d400?w=1000&q=80)
+    center center;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 100% 200% !important;
   font-weight: bold;
-  opacity: 0.75;
 }
 
 .splash__container {

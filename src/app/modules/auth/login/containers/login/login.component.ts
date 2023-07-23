@@ -35,6 +35,10 @@ import { AuthService } from '../../../shared/services/auth.service';
             </p>
           </div>
         </div>
+        <p class="text-xs mt-12 md:text-sm md:w-1/2">
+          Spotted is not affiliated, associated, authorized, endorsed by,
+          or in any way officially connected with © Spotify AB.
+        </p>
       </div>
     </div>
   `,
