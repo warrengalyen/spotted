@@ -1,28 +1,27 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
-import { Observable } from 'rxjs';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Params} from '@angular/router';
+import {Observable} from 'rxjs';
 import {
   Track,
   TrackAudioAnalysis,
   TrackFeatures,
 } from '../shared/models/shared.model';
-import { User } from '../shared/models/user.model';
-import { ProfileService } from '../shared/services/profile.service';
-import { TracksService } from '../shared/services/tracks.service';
+import {User} from '../shared/models/user.model';
+import {ProfileService} from '../shared/services/profile.service';
+import {TracksService} from '../shared/services/tracks.service';
 
 @Component({
   selector: 'track',
   styleUrls: ['./track.component.scss'],
   template: `
-    <div class="page">
-      <nav-bar *ngIf="user$" [profile]="user$ | async"></nav-bar>
+    <page>
       <track-summary [track]="track$ | async"></track-summary>
       <track-details
         [track]="track$ | async"
         [trackAnalysis]="trackAnalysis$ | async"
         [trackFeatures]="trackFeatures$ | async"
       ></track-details>
-    </div>
+    </page>
   `,
 })
 export class TrackComponent implements OnInit {
@@ -35,7 +34,8 @@ export class TrackComponent implements OnInit {
     private route: ActivatedRoute,
     private profileService: ProfileService,
     private trackService: TracksService
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.route.params.forEach((params: Params) => {

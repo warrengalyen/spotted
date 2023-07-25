@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppSharedModule } from '../../shared/shared.module';
 import { ArtistService } from '../shared/services/artists.service';
 import { MusicSharedModule } from '../shared/shared.module';
-import { AritstComponent } from './artist.component';
+import { ArtistComponent } from './artist.component';
 import { AritstRelatedComponent } from './components/artist-related/artist-related.component';
 import { ArtistSummaryComponent } from './components/artist-summary/artist-summary.component';
 import { ArtistTopTracksComponent } from './components/artist-top-tracks/artist-top-tracks.component';
@@ -12,7 +12,7 @@ import { ArtistTopTracksComponent } from './components/artist-top-tracks/artist-
 export const ARTIST_ROUTES: Routes = [
   {
     path: ':id',
-    component: AritstComponent,
+    component: ArtistComponent,
   },
   {
     // TODO: 404 Component
@@ -29,7 +29,7 @@ export const ARTIST_ROUTES: Routes = [
     AppSharedModule,
   ],
   declarations: [
-    AritstComponent,
+    ArtistComponent,
     ArtistSummaryComponent,
     AritstRelatedComponent,
     ArtistTopTracksComponent,
