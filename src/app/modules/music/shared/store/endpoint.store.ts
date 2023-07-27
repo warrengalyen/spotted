@@ -11,4 +11,6 @@ export const ENDPOINTS = new Map([
   ['track_features', `https://api.spotify.com/v1/audio-features/{id}`],
   ['track_analysis', `https://api.spotify.com/v1/audio-analysis/{id}`],
   ['recommendations', `https://api.spotify.com/v1/recommendations`],
+  ['create_playlist', `https://api.spotify.com/v1/users/{user_id}/playlists`],
+  ['add_songs_to_playlist', `https://api.spotify.com/v1/playlists/{playlist_id}/tracks`]
 ]);
