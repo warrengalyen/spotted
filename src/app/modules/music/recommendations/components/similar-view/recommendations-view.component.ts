@@ -10,7 +10,15 @@ import { RecommendationsResponse } from '../../../shared/models/recommendations.
         Recommended playlist similar to '{{ playlist.name }}'
       </p>
       <div class="mb-4">
-        <spotted-button (click)="save()" text="Save Playlist"></spotted-button>
+        <div class="flex items-center">
+          <spotted-button
+            (click)="save()"
+            text="Save Playlist"
+          ></spotted-button>
+          <label *ngIf="showCreationSuccessLabel" class="ml-2"
+            >✅ Playlist saved.</label
+          >
+        </div>
       </div>
       <div *ngFor="let track of recommendedTracks.tracks">
         <top-tracks-item [topTrack]="track"></top-tracks-item>
@@ -23,6 +31,8 @@ export class RecommendationsViewComponent {
   playlist: PlaylistDetailsResponse;
   @Input()
   recommendedTracks: RecommendationsResponse;
+  @Input()
+  showCreationSuccessLabel: boolean;
   @Output()
   savePlaylistEvent: EventEmitter<any> = new EventEmitter<any>();
 
