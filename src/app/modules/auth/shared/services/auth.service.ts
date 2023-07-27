@@ -18,13 +18,14 @@ export class AuthService {
     'user-read-private',
     'user-top-read',
     'user-read-email',
+    'playlist-modify-public',
     'playlist-read-private',
     'playlist-read-collaborative',
-    'user-follow-read'
+    'user-follow-read',
   ];
   auth$: Observable<string>;
 
-  constructor(private httpClient: HttpClient, private store: Store) {
+  constructor(private store: Store) {
     this.auth$ = this.store.select(AuthConstants.AUTH_KEY);
   }
 
@@ -35,13 +36,15 @@ export class AuthService {
     window.location.href = this.buildUrlParam(loginUrl + '?', {
       client_id: AuthConfig.clientId,
       response_type: 'token',
-      redirect_uri: encodeURIComponent(`${window.location.protocol}//${window.location.host}/login`),
+      redirect_uri: encodeURIComponent(
+        `${window.location.protocol}//${window.location.host}/login`,
+      ),
       scope: encodeURIComponent(this.scopes.join(' ')),
     });
   }
 
   public logout(): void {
-      this.store.set(AuthConstants.AUTH_KEY, undefined);
+    this.store.set(AuthConstants.AUTH_KEY, undefined);
   }
 
   get authToken() {
@@ -65,7 +68,7 @@ export class AuthService {
    */
   private buildUrlParam(url: string, params: any): string {
     Object.entries(params).forEach(
-      ([key, value]) => (url += `&${key}=${value}`)
+      ([key, value]) => (url += `&${key}=${value}`),
     );
     return url;
   }

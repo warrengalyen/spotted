@@ -41,10 +41,10 @@ export class PlaylistsService {
   getPlaylistTracks(
     playlistId: string,
     limit?: number,
-    offset?: number
+    offset?: number,
   ): Observable<PlaylistTracksResponse> {
     const endpoint = new URL(
-      ENDPOINTS.get('playlist_details') + playlistId + `/tracks`
+      ENDPOINTS.get('playlist_details') + playlistId + `/tracks`,
     );
     if (limit) {
       endpoint.searchParams.append('limit', limit.toString());
@@ -61,14 +61,14 @@ export class PlaylistsService {
   putCreatePlaylist(
     userId: string,
     name: string,
-    description?: string
+    description?: string,
   ): Observable<PlaylistDetailsResponse> {
     const endpoint = new URL(
-      ENDPOINTS.get('create_playlist').replace('{user_id}', userId)
+      ENDPOINTS.get('create_playlist').replace('{user_id}', userId),
     );
     const payload: CreatePlaylistRequestBody = {
       name,
-      public: false,
+      public: true,
       collaborative: false,
       description,
     };
@@ -82,13 +82,13 @@ export class PlaylistsService {
   putSongsToPlaylist(
     playlistId: string,
     position?: number,
-    uris?: string[]
+    uris?: string[],
   ): Observable<AddSongsToPlaylistResponse> {
     const endpoint = new URL(
       ENDPOINTS.get('add_songs_to_playlist').replace(
         '{playlist_id}',
-        playlistId
-      )
+        playlistId,
+      ),
     );
     const payload: AddSongsToPlaylistRequestBody = {
       uris,
