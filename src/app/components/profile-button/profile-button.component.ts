@@ -11,12 +11,7 @@ import { User } from 'src/app/modules/music/shared/models/user.model';
         (click)="openProfile()"
       >
         <img
-          [src]="
-            user?.images[0]?.url ||
-            'https://ui-avatars.com/api/?name=' +
-              encodeUrl(user?.display_name) +
-              '&rounded=true'
-          "
+          [src]="user?.images[0]?.url || getAvatarFallback(user?.display_name)"
           class="rounded-full w-8 h-8 mr-3"
         />
         {{ user?.display_name }}
@@ -59,6 +54,8 @@ import { User } from 'src/app/modules/music/shared/models/user.model';
     </div>
   `,
 })
+const UI_AVATARS_HOST = 'https://ui-avatars.com/api/?name=';
+const UI_AVATARS_PARAMETERS = '&rounded=true';
 export class ProfileButton {
   @Input() user: User;
   @Output() profile = new EventEmitter<any>();
@@ -70,8 +67,8 @@ export class ProfileButton {
     this.profile.emit();
   }
 
-  encodeUrl(url: string) {
-    return encodeURIComponent(url);
+  getAvatarFallback(name: string) {
+    return `${UI_AVATARS_HOST}${encodeURIComponent(name)}${UI_AVATARS_PARAMETERS}`;
   }
 
   logoutUser() {
