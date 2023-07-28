@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Store } from 'src/store';
@@ -11,7 +12,7 @@ import { PlaylistsResponse } from './modules/music/shared/models/playlist.model'
   selector: 'app-root',
   styleUrls: ['./app.component.scss'],
   template: `
-    <div >
+    <div>
       <div class="h-screen w-full bg-black">
         <router-outlet> </router-outlet>
       </div>
@@ -22,14 +23,30 @@ export class AppComponent implements OnInit {
   auth$: Observable<string>;
   playlists$: Observable<PlaylistsResponse>;
 
+  APP_NAME: string = `Spotted`;
+
   constructor(
     private store: Store,
-    private router: Router,
     private auth: AuthService,
+    private title: Title,
+    private meta: Meta,
   ) {}
 
   ngOnInit() {
     this.auth$ = this.store.select(AuthConstants.AUTH_KEY);
+    this.title.setTitle(this.APP_NAME);
+    this.meta.addTags([
+      {
+        name: 'keywords',
+        content:
+          'spotted, spotify, music, spotify music, music charts, songs, tracks, artists, deezer, tidal, apple music, prime music',
+      },
+      {
+        name: 'description',
+        content: 'Spotted is the one place to view your Spotify stats.',
+      },
+      { name: 'robots', content: 'index, follow' },
+    ]);
   }
 
   isLoggedIn() {
