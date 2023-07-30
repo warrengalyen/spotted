@@ -12,9 +12,9 @@ import { Artist } from '../../../shared/models/shared.model';
           <p class="ml-6 text-2xl md:text-6xl font-bold">{{ artist?.name }}</p>
         </div>
         <div>
-          <a [href]="artist?.external_urls['spotify']">
+          <external-link [href]="artist?.external_urls['spotify']">
             <spotted-button text="Open In Spotify"></spotted-button>
-          </a>
+          </external-link>
         </div>
       </div>
       <div class="grid grid-cols-3 gap-3 text-center py-4">
