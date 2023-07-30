@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map, tap } from 'rxjs/operators';
 import { ScriptService } from 'src/app/modules/shared/script.service';
@@ -15,8 +15,10 @@ import { AuthService } from '../../../shared/services/auth.service';
         width="32"
         height="32"
       ></canvas>
-      <div class="splash__container w-full mx-8 z-10 sm:mx-24 xl:mx-auto">
-        <div class="md:grid md:grid-cols-2 md:gap-24">
+      <div
+        class="splash__container w-full mx-8 z-10 sm:mx-12 md:mx-24 xl:mx-auto"
+      >
+        <div class="md:grid md:grid-cols-2 md:gap-12">
           <div class=" md:self-center">
             <p class="wow mb-3 text-7xl tracking-tight md:text-8xl md:mb-8">
               Spotted.
@@ -24,20 +26,21 @@ import { AuthService } from '../../../shared/services/auth.service';
             <div class="flex my-8 md:my-12">
               <spotted-button
                 text="Launch App"
-                extraClasses="splash__btn text-xs md:text-sm mr-4 md:px-12 md:py-4"
+                extraClasses="splash__btn text-xs px-10 py-3 md:text-sm mr-4 md:px-12 md:py-4"
                 (click)="loginUser()"
               ></spotted-button>
             </div>
           </div>
           <div>
             <p class="text-l leading-normal font-bold md:text-7xl lg:text-8xl">
-              Your <span class="stroke-font">Spotify</span> stats all in one place.
+              Your <span class="stroke-font">Spotify</span> stats all in one
+              place.
             </p>
           </div>
         </div>
         <p class="text-xs mt-12 md:text-sm md:w-1/2">
-          Spotted is not affiliated, associated, authorized, endorsed by,
-          or in any way officially connected with © Spotify AB.
+          Spotted is not affiliated, associated, authorized, endorsed by, or in
+          any way officially connected with © Spotify AB.
         </p>
       </div>
     </div>
@@ -50,7 +53,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private auth: AuthService,
-    private scriptService: ScriptService
+    private scriptService: ScriptService,
   ) {
     // Check if store has token already
     this.route.fragment
@@ -63,7 +66,7 @@ export class LoginComponent implements OnInit {
         })),
         tap((res) => {
           auth.setToken(res.access_token);
-        })
+        }),
       )
       .subscribe(async (res) => {
         console.log(res, 'aaaaa');
