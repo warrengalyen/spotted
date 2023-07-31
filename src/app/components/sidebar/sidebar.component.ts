@@ -14,8 +14,11 @@ import { filter } from 'rxjs/operators';
     >
       <div class="sidebar__container h-full grid">
         <div class="pb-8 flex justify-between md:block">
-          <a routerLink="/music/dashboard" class="font-bold text-2xl"
-          >Spotted.</a
+          <a routerLink="/music/dashboard" class="font-bold text-2xl">
+            <div class="flex align-middle">
+              <img src="/assets/images/logo.png" style="padding-right: 10px;" />
+              Spotted.
+            </div></a
           >
           <button class="md:hidden" (click)="toggleSidebar()">
             <i class="fas fa-bars"></i>
@@ -27,22 +30,23 @@ import { filter } from 'rxjs/operators';
               <a
                 routerLink="/music/top-artists"
                 routerLinkActive="sidebar__link--active"
-              >Top Artists</a
+                >Top Artists</a
               >
             </li>
             <li class="sidebar__link transition hover:font-bold">
               <a
                 routerLink="/music/top-tracks"
                 routerLinkActive="sidebar__link--active"
-              >Top Tracks</a
+                >Top Tracks</a
               >
             </li>
             <li class="sidebar__link transition hover:font-bold">
               <a
                 routerLink="/music/top-genres"
                 routerLinkActive="sidebar__link--active"
-              >Top Genres</a
-              ></li>
+                >Top Genres</a
+              >
+            </li>
           </ul>
         </div>
         <p class="uppercase font-bold my-4 tracking-widest">Playlists</p>
@@ -56,7 +60,7 @@ import { filter } from 'rxjs/operators';
           >
             <a [routerLink]="['/music/playlist/', playlist.id]">{{
               playlist.name
-              }}</a>
+            }}</a>
           </li>
         </ul>
         <div class="sidebar__btn-container mt-3">
@@ -121,7 +125,10 @@ export class SidebarComponent {
   @Input() playlists: PlaylistsResponse;
   sidebarOpen: boolean = false;
 
-  constructor(private auth: AuthService, private router: Router) {
+  constructor(
+    private auth: AuthService,
+    private router: Router,
+  ) {
     router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
