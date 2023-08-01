@@ -20,8 +20,10 @@ import { ProfileService } from '../shared/services/profile.service';
           <div class="image-container">
             <img [src]="(playlistDetails$ | async)?.images[0].url" />
           </div>
-          <p class="text-4xl font-bold">
-            <span class="title">{{ (playlistDetails$ | async)?.name }}</span>
+          <p class="text-2xl font-bold">
+            <span class="title wrap">{{
+              (playlistDetails$ | async)?.name
+            }}</span>
           </p>
           <p class="text-m mb-4 text-gray-300">
             {{ (playlistDetails$ | async)?.tracks.total }} Tracks
@@ -63,7 +65,7 @@ export class PlaylistComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private playlistsService: PlaylistsService,
-    private profileService: ProfileService
+    private profileService: ProfileService,
   ) {}
 
   ngOnInit(): void {
@@ -71,12 +73,12 @@ export class PlaylistComponent implements OnInit {
       if (params['id']) {
         this.playlistId = params['id'];
         this.playlistDetails$ = this.playlistsService.getPlaylistDetails(
-          this.playlistId
+          this.playlistId,
         );
         this.playlistTracks = [];
         this.playlistDetails$.subscribe((response) => {
           this.playlistTracks = this.playlistTracks.concat(
-            response.tracks.items
+            response.tracks.items,
           );
           this.nextUrl = response.tracks.next;
         });
@@ -93,11 +95,12 @@ export class PlaylistComponent implements OnInit {
       document.body.scrollHeight - 20
     ) {
       if (this.nextUrl) {
-        const next: Observable<PlaylistTracksResponse> = this.playlistsService.getPlaylistTracks(
-          this.playlistId,
-          100,
-          this.playlistTracks.length
-        );
+        const next: Observable<PlaylistTracksResponse> =
+          this.playlistsService.getPlaylistTracks(
+            this.playlistId,
+            100,
+            this.playlistTracks.length,
+          );
         this.nextUrl = null;
 
         next.subscribe((response) => {
