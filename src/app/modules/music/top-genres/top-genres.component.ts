@@ -8,7 +8,7 @@ import { TopService, TopTimeRange } from '../shared/services/top.service';
   selector: 'top-genres',
   styleUrls: ['./top-genres.component.scss'],
   template: `
-    <page>
+    <page [isDone]="(user$ | async) && (topArtists$ | async)">
       <p class="text-7xl mb-4 font-bold md:text-8xl">
         <span class="title">Top Genres</span>
       </p>
@@ -33,7 +33,7 @@ export class TopGenresComponent implements OnInit {
 
   constructor(
     private topService: TopService,
-    private profileService: ProfileService
+    private profileService: ProfileService,
   ) {}
 
   ngOnInit() {

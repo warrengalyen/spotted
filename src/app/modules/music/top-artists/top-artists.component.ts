@@ -1,15 +1,15 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {Observable} from 'rxjs';
-import {TopArtistsResponse} from '../shared/models/top.model';
-import {User} from '../shared/models/user.model';
-import {ProfileService} from '../shared/services/profile.service';
-import {TopService, TopTimeRange} from '../shared/services/top.service';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { TopArtistsResponse } from '../shared/models/top.model';
+import { User } from '../shared/models/user.model';
+import { ProfileService } from '../shared/services/profile.service';
+import { TopService, TopTimeRange } from '../shared/services/top.service';
 
 @Component({
   selector: 'top-artists',
   styleUrls: ['./top-artists.component.scss'],
   template: `
-    <page>
+    <page [isDone]="(user$ | async) && (topArtists$ | async)">
       <p class="text-7xl mb-4 font-bold md:text-8xl">
         <span class="title">Top Artists</span>
       </p>
@@ -34,16 +34,12 @@ export class TopArtistsComponent implements OnInit {
 
   constructor(
     private topService: TopService,
-    private profileService: ProfileService
-  ) {
-  }
+    private profileService: ProfileService,
+  ) {}
 
   ngOnInit() {
     this.timeRange = this.DEFAULT_TIME_RANGE;
-    this.topArtists$ = this.topService.getTopArtists(
-      this.timeRange,
-      50
-    );
+    this.topArtists$ = this.topService.getTopArtists(this.timeRange, 50);
     this.user$ = this.profileService.getProfile();
   }
 
