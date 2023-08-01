@@ -9,10 +9,15 @@ import { ProfileService } from '../shared/services/profile.service';
   selector: 'profile',
   styleUrls: ['./profile.component.scss'],
   template: `
-    <div class="page">
-      <nav-bar *ngIf="user$" [profile]="user$ | async"></nav-bar>
-      <profile-summary [user]="user$ | async" [getFollowingResponse]="following$ | async" [playlistsResponse]="playlists$ | async"></profile-summary>
-    </div>
+    <page
+      [isDone]="(user$ | async) && (following$ | async) && (playlists$ | async)"
+    >
+      <profile-summary
+        [user]="user$ | async"
+        [getFollowingResponse]="following$ | async"
+        [playlistsResponse]="playlists$ | async"
+      ></profile-summary>
+    </page>
   `,
 })
 export class ProfileComponent implements OnInit {

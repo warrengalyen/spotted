@@ -14,16 +14,14 @@ import { ProfileService } from '../shared/services/profile.service';
   selector: 'playlist',
   styleUrls: ['./playlist.component.scss'],
   template: `
-    <page>
+    <page [isDone]="(playlistDetails$ | async) && playlistTracks">
       <div class="md:flex">
-        <div *ngIf="playlistDetails$" class="playlist__stats">
+        <div class="playlist__stats">
           <div class="image-container">
             <img [src]="(playlistDetails$ | async)?.images[0].url" />
           </div>
           <p class="text-2xl font-bold">
-            <span class="title wrap">{{
-              (playlistDetails$ | async)?.name
-            }}</span>
+            <span class="title wrap">{{ (playlistDetails$ | async)?.name }}</span>
           </p>
           <p class="text-m mb-4 text-gray-300">
             {{ (playlistDetails$ | async)?.tracks.total }} Tracks
@@ -45,11 +43,7 @@ import { ProfileService } from '../shared/services/profile.service';
           </div>
         </div>
         <div class="flex-grow">
-          <playlist-view
-            *ngIf="playlistTracks"
-            [playlistTracks]="playlistTracks"
-          >
-          </playlist-view>
+          <playlist-view [playlistTracks]="playlistTracks"> </playlist-view>
         </div>
       </div>
     </page>
@@ -72,14 +66,10 @@ export class PlaylistComponent implements OnInit {
     this.route.params.forEach((params: Params) => {
       if (params['id']) {
         this.playlistId = params['id'];
-        this.playlistDetails$ = this.playlistsService.getPlaylistDetails(
-          this.playlistId,
-        );
+        this.playlistDetails$ = this.playlistsService.getPlaylistDetails(this.playlistId);
         this.playlistTracks = [];
         this.playlistDetails$.subscribe((response) => {
-          this.playlistTracks = this.playlistTracks.concat(
-            response.tracks.items,
-          );
+          this.playlistTracks = this.playlistTracks.concat(response.tracks.items);
           this.nextUrl = response.tracks.next;
         });
       }
@@ -90,17 +80,13 @@ export class PlaylistComponent implements OnInit {
 
   @HostListener('window:scroll', [])
   onScroll(): void {
-    if (
-      window.innerHeight + window.scrollY >=
-      document.body.scrollHeight - 20
-    ) {
+    if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 20) {
       if (this.nextUrl) {
-        const next: Observable<PlaylistTracksResponse> =
-          this.playlistsService.getPlaylistTracks(
-            this.playlistId,
-            100,
-            this.playlistTracks.length,
-          );
+        const next: Observable<PlaylistTracksResponse> = this.playlistsService.getPlaylistTracks(
+          this.playlistId,
+          100,
+          this.playlistTracks.length,
+        );
         this.nextUrl = null;
 
         next.subscribe((response) => {
