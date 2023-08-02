@@ -4,7 +4,7 @@ import { Component, Input } from '@angular/core';
   selector: 'external-link',
   template: `
     <a
-      class="this.classes"
+      [class]="this.classes"
       [href]="this.href"
       rel="noopener noreferrer"
       target="_blank"

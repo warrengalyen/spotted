@@ -18,7 +18,7 @@ export class TimestampPipe implements PipeTransform {
     const hour = Math.floor(minute / 60);
     minute = minute % 60;
 
-    let time = `$${minute.toString()}:${seconds.toString().padStart(2, '0')}`;
+    let time = `${minute.toString()}:${seconds.toString().padStart(2, '0')}`;
     if (hour) {
       time = `${hour}: ${time}`;
     }

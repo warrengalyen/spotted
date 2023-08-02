@@ -8,7 +8,7 @@ export interface State {
 }
 
 const state: State = {
-  access_token: undefined,
+  access_token: null,
 };
 
 @Injectable({ providedIn: 'root' })
@@ -18,7 +18,7 @@ export class Store {
 
   constructor(private localStorageService: LocalStorageService) {
     // Initialize state from local storage
-    Object.keys(state).forEach((key) => {
+    Object.keys(state).forEach(key => {
       state[key] = localStorageService.getItem(key);
     });
   }

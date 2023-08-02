@@ -43,7 +43,7 @@ export class AppComponent implements OnInit {
       },
       {
         name: 'description',
-        content: 'Spotted is the one place to view your Spotify stats.',
+        content: 'Your Spotify stats all in one place.',
       },
       { name: 'robots', content: 'index, follow' },
     ]);
