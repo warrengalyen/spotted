@@ -32,18 +32,20 @@ const UI_AVATARS_PARAMETERS = '&rounded=true';
         class="dropdown-menu shadow-2xl absolute hidden text-gray-700 pt-1 w-full"
       >
         <li class="">
-          <a
+          <external-link
             class="rounded-t bg-gray-800 text-white hover:bg-gray-700 py-2 px-4 block whitespace-no-wrap"
-            href="#"
-            >Github</a
+            href="https://github.com/warrengalyen/spotted"
           >
+            Github
+          </external-link>
         </li>
         <li class="">
-          <a
+          <external-link
             class="bg-gray-800 text-white hover:bg-gray-700 py-2 px-4 block whitespace-no-wrap"
-            href="#"
-            >Donate</a
+            href="https://www.paypal.com/paypalme/warrengalyen"
           >
+            Donate
+          </external-link>
         </li>
         <li>
           <a
