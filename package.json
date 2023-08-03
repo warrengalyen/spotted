@@ -22,7 +22,7 @@
     "@angular/service-worker": "~10.1.0",
     "autoprefixer": "^10.0.4",
     "chart.js": "^2.9.4",
-    "dotenv": "^8.2.0",
+    "dotenv": "^16.3.1",
     "dotenv-webpack": "^6.0.0",
     "ng2-charts": "^2.4.2",
     "ngx-build-plus": "^10.1.1",
