@@ -23,7 +23,7 @@
     "autoprefixer": "^10.0.4",
     "chart.js": "^2.9.4",
     "dotenv": "^16.3.1",
-    "dotenv-webpack": "^6.0.0",
+    "dotenv-webpack": "^8.0.1",
     "ng2-charts": "^2.4.2",
     "ngx-build-plus": "^11.0.0",
     "postcss": "^8.1.10",
