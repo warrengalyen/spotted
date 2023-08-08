@@ -27,7 +27,7 @@
     "ng2-charts": "^2.4.2",
     "ngx-build-plus": "^11.0.0",
     "postcss": "^8.1.10",
-    "postcss-import": "^13.0.0",
+    "postcss-import": "^15.1.0",
     "postcss-scss": "^4.0.6",
     "rxjs": "~6.6.0",
     "tailwindcss": "^2.0.1",
